@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
+import ChatBot from "@/components/ui/chatbot";
 import ExitIntentPopup from "@/components/ui/exit-intent-popup";
 import HeroSection from "@/components/sections/hero-section";
 import ServicesSection from "@/components/sections/services-section";
@@ -28,7 +28,7 @@ export default function Home() {
       <Footer />
 
       {/* Floating Elements */}
-      <FloatingWhatsApp />
+      <ChatBot />
       <ExitIntentPopup />
     </>
   );

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
+import ChatBot from "@/components/ui/chatbot";
 import ServicePageClient from "@/components/service-page-client";
 import { getServiceBySlug } from "@/lib/services-data";
 import { notFound } from "next/navigation";
@@ -102,7 +102,7 @@ export default function YagDegisimiPage() {
             <Header />
             <ServicePageClient service={service} />
             <Footer />
-            <FloatingWhatsApp />
+            <ChatBot />
         </>
     );
 }

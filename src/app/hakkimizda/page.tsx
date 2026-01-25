@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
+import ChatBot from "@/components/ui/chatbot";
 
 // Şirket değerleri
 const values = [
@@ -543,7 +543,7 @@ export default function HakkimizdaPage() {
             </main>
 
             <Footer />
-            <FloatingWhatsApp />
+            <ChatBot />
         </>
     );
 }
