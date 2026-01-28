@@ -36,12 +36,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         ...servicePages,
+        // Location Pages - Primary
         {
             url: `${baseUrl}/konum/kas`,
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.9,
         },
+        {
+            url: `${baseUrl}/konum/antalya`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        // Location Pages - Secondary
         {
             url: `${baseUrl}/konum/kalkan`,
             lastModified: new Date(),
@@ -50,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${baseUrl}/konum/demre`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/konum/finike`,
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.8,

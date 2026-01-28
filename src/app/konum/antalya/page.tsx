@@ -2,23 +2,40 @@ import { Metadata } from "next";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
-import { Phone, MapPin, Clock, Star, ArrowRight, CheckCircle } from "lucide-react";
+import { Phone, MapPin, Clock, Star, ArrowRight, CheckCircle, Building } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Kaş Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
+    title: "Antalya Oto Tamir | Batı Antalya Oto Servis Merkezi - Oto Yasin",
     description:
-        "Kaş'ta oto tamir ve bakım hizmeti arıyorsanız doğru yerdesiniz! 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça. Acil oto elektrik, yağ değişimi, vize kontrolü.",
+        "Antalya batı bölgesinin (Kaş, Kalkan, Demre, Finike) en güvenilir oto tamir merkezi. 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça. Profesyonel oto elektrik, mekanik bakım, vize kontrolü.",
     keywords: [
+        "Antalya oto tamir",
+        "Antalya oto bakım",
+        "Antalya oto elektrik",
+        "Antalya batı bölgesi oto servis",
+        "Antalya oto servis",
+        "Antalya araç bakım",
+        "Antalya 7/24 tamirci",
+        "Antalya acil oto yardım",
+        "Antalya motor bakım",
+        "Antalya yağ değişimi",
         "Kaş oto tamir",
-        "Kaş oto elektrik",
-        "Kaş 7/24 açık tamirci",
-        "Kaş yağ değişimi",
-        "Kaş vize kontrolü",
-        "Kaş acil oto yardım",
+        "Kalkan oto tamir",
+        "Demre oto tamir",
+        "Finike oto tamir",
     ],
     alternates: {
-        canonical: "https://otoyasin.com/konum/kas",
+        canonical: "https://otoyasin.com/konum/antalya",
+    },
+    openGraph: {
+        title: "Antalya Oto Tamir | Batı Antalya Oto Servis Merkezi - Oto Yasin",
+        description:
+            "Antalya batı bölgesinin en güvenilir oto tamir merkezi. 7/24 açık, 20+ yıl tecrübe.",
+        url: "https://otoyasin.com/konum/antalya",
+        siteName: "Oto Yasin",
+        locale: "tr_TR",
+        type: "website",
     },
 };
 
@@ -33,7 +50,14 @@ const services = [
     "Çekici Hizmeti",
 ];
 
-// BreadcrumbList Schema for navigation rich snippets
+const serviceAreas = [
+    { name: "Kaş", href: "/konum/kas", distance: "Merkez" },
+    { name: "Kalkan", href: "/konum/kalkan", distance: "~20 dk" },
+    { name: "Demre", href: "/konum/demre", distance: "~30 dk" },
+    { name: "Finike", href: "/konum/finike", distance: "~25 dk" },
+];
+
+// BreadcrumbList Schema
 const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -53,19 +77,21 @@ const breadcrumbSchema = {
         {
             "@type": "ListItem",
             position: 3,
-            name: "Kaş",
-            item: "https://otoyasin.com/konum/kas",
+            name: "Antalya",
+            item: "https://otoyasin.com/konum/antalya",
         },
     ],
 };
 
+// LocalBusiness Schema for Antalya region
 const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    "@id": "https://otoyasin.com/konum/kas#localbusiness",
-    name: "Oto Yasin - Kaş Oto Tamir",
-    description: "Kaş'ın en güvenilir 7/24 açık oto tamir ve bakım servisi. 20+ yıl tecrübe, orijinal yedek parça.",
-    url: "https://otoyasin.com/konum/kas",
+    "@id": "https://otoyasin.com/konum/antalya#localbusiness",
+    name: "Oto Yasin - Antalya Batı Bölgesi Oto Tamir Merkezi",
+    description:
+        "Antalya batı bölgesinin (Kaş, Kalkan, Demre, Finike) en güvenilir 7/24 açık oto tamir ve bakım merkezi. 20+ yıl tecrübe, orijinal yedek parça garantisi.",
+    url: "https://otoyasin.com/konum/antalya",
     telephone: "+90 532 493 49 68",
     address: {
         "@type": "PostalAddress",
@@ -80,11 +106,13 @@ const localBusinessSchema = {
         latitude: 36.296935,
         longitude: 29.328593,
     },
-    areaServed: {
-        "@type": "City",
-        name: "Kaş",
-        containedInPlace: { "@type": "State", name: "Antalya" },
-    },
+    areaServed: [
+        { "@type": "State", name: "Antalya" },
+        { "@type": "City", name: "Kaş" },
+        { "@type": "City", name: "Kalkan" },
+        { "@type": "City", name: "Demre" },
+        { "@type": "City", name: "Finike" },
+    ],
     openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -101,7 +129,7 @@ const localBusinessSchema = {
     },
 };
 
-export default function KasPage() {
+export default function AntalyaPage() {
     return (
         <>
             <script
@@ -120,16 +148,15 @@ export default function KasPage() {
                     <div className="section-container relative z-10">
                         <div className="max-w-3xl">
                             <div className="flex items-center gap-2 mb-6">
-                                <MapPin className="w-5 h-5 text-[#FF3D00]" />
-                                <span className="text-[#FF3D00] font-medium">Kaş, Antalya</span>
+                                <Building className="w-5 h-5 text-[#FF3D00]" />
+                                <span className="text-[#FF3D00] font-medium">Antalya Batı Bölgesi</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                                Kaş Oto Tamir ve Bakım Servisi
+                                Antalya Oto Tamir ve Bakım Merkezi
                             </h1>
                             <p className="text-lg text-[#A1A1AA] mb-8">
-                                Kaş&apos;ta 7/24 açık, güvenilir oto tamir adresi. 20 yılı aşkın
-                                tecrübemizle her marka araç için profesyonel bakım ve onarım
-                                hizmeti sunuyoruz.
+                                Antalya&apos;nın batı bölgesinde (Kaş, Kalkan, Demre, Finike) 7/24 açık, güvenilir oto tamir merkezi.
+                                20 yılı aşkın tecrübemizle her marka ve model araç için profesyonel bakım ve onarım hizmeti sunuyoruz.
                             </p>
 
                             <div className="flex flex-wrap gap-4 mb-8">
@@ -139,7 +166,11 @@ export default function KasPage() {
                                 </div>
                                 <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/10">
                                     <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                                    <span className="text-white">4.6/5 Google</span>
+                                    <span className="text-white">4.9/5 Google</span>
+                                </div>
+                                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/10">
+                                    <MapPin className="w-4 h-4 text-[#FF3D00]" />
+                                    <span className="text-white">4 Bölge Kapsamı</span>
                                 </div>
                             </div>
 
@@ -163,11 +194,40 @@ export default function KasPage() {
                     </div>
                 </section>
 
-                {/* Services */}
+                {/* Service Areas */}
                 <section className="py-20 bg-[#1C1C1C]">
                     <div className="section-container">
                         <h2 className="text-3xl font-bold text-white mb-8">
-                            Kaş&apos;ta Sunduğumuz Hizmetler
+                            Antalya Batı Bölgesi Hizmet Noktaları
+                        </h2>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {serviceAreas.map((area) => (
+                                <Link
+                                    key={area.name}
+                                    href={area.href}
+                                    className="group p-6 bg-white/5 border border-white/10 rounded-xl hover:border-[#FF3D00]/50 transition-all duration-300"
+                                >
+                                    <div className="flex items-center justify-between mb-4">
+                                        <MapPin className="w-8 h-8 text-[#FF3D00]" />
+                                        <span className="text-sm text-[#A1A1AA]">{area.distance}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FF3D00] transition-colors">
+                                        {area.name}
+                                    </h3>
+                                    <p className="text-[#A1A1AA] text-sm">
+                                        {area.name} ve çevresi için oto tamir hizmeti
+                                    </p>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Services */}
+                <section className="py-20 bg-[#0A0A0A]">
+                    <div className="section-container">
+                        <h2 className="text-3xl font-bold text-white mb-8">
+                            Antalya Genelinde Sunduğumuz Hizmetler
                         </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {services.map((service) => (
@@ -184,17 +244,17 @@ export default function KasPage() {
                 </section>
 
                 {/* Location Info */}
-                <section className="py-20 bg-[#0A0A0A]">
+                <section className="py-20 bg-[#1C1C1C]">
                     <div className="section-container">
                         <div className="grid lg:grid-cols-2 gap-12">
                             <div>
                                 <h2 className="text-3xl font-bold text-white mb-6">
-                                    Kaş Servis Noktamız
+                                    Antalya Batı Bölgesi Servis Merkezi
                                 </h2>
                                 <p className="text-[#A1A1AA] mb-6">
-                                    Kaş merkeze yakın konumumuzla hızlı ve kolay ulaşım imkanı
-                                    sunuyoruz. Geniş servis alanımız ve modern ekipmanlarımızla
-                                    aracınıza en iyi hizmeti veriyoruz.
+                                    Kaş merkezde konumlanan servisimiz, Antalya&apos;nın batı bölgesine (Kalkan, Demre, Finike)
+                                    7/24 profesyonel oto tamir ve bakım hizmeti sunmaktadır. Acil durumlarda tüm bölgelere
+                                    çekici hizmetimiz mevcuttur.
                                 </p>
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-4">
@@ -236,7 +296,7 @@ export default function KasPage() {
                                     style={{ border: 0 }}
                                     allowFullScreen
                                     loading="lazy"
-                                    title="Oto Yasin Kaş Konum"
+                                    title="Oto Yasin - Antalya Batı Bölgesi"
                                     className="grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                                 />
                             </div>
@@ -248,14 +308,14 @@ export default function KasPage() {
                 <section className="py-20 bg-gradient-to-r from-[#FF3D00] to-[#FF6B00]">
                     <div className="section-container text-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Kaş&apos;ta Aracınız İçin En İyi Hizmet
+                            Antalya&apos;da Aracınız İçin En İyi Hizmet
                         </h2>
                         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
                             Hemen arayın, uzman ekibimizle tanışın. İlk bakımınızda %10
                             indirim fırsatını kaçırmayın!
                         </p>
                         <a
-                            href="https://wa.me/905324934968?text=Merhaba,%20Kaş%20bölgesinden%20arıyorum.%20Araç%20bakımı%20için%20randevu%20almak%20istiyorum."
+                            href="https://wa.me/905324934968?text=Merhaba,%20Antalya%20bölgesinden%20arıyorum.%20Araç%20bakımı%20için%20randevu%20almak%20istiyorum."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#FF3D00] font-bold rounded-xl hover:bg-white/90 transition-all duration-200"

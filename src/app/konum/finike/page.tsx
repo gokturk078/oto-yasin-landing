@@ -6,19 +6,32 @@ import { Phone, MapPin, Clock, Star, ArrowRight, CheckCircle } from "lucide-reac
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Kaş Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
+    title: "Finike Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
     description:
-        "Kaş'ta oto tamir ve bakım hizmeti arıyorsanız doğru yerdesiniz! 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça. Acil oto elektrik, yağ değişimi, vize kontrolü.",
+        "Finike'de oto tamir ve bakım hizmeti arıyorsanız doğru yerdesiniz! 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça. Acil oto elektrik, yağ değişimi, vize kontrolü. Finike ve çevresine hızlı servis.",
     keywords: [
-        "Kaş oto tamir",
-        "Kaş oto elektrik",
-        "Kaş 7/24 açık tamirci",
-        "Kaş yağ değişimi",
-        "Kaş vize kontrolü",
-        "Kaş acil oto yardım",
+        "Finike oto tamir",
+        "Finike oto elektrik",
+        "Finike 7/24 açık tamirci",
+        "Finike yağ değişimi",
+        "Finike vize kontrolü",
+        "Finike acil oto yardım",
+        "Finike oto bakım",
+        "Finike oto servis",
+        "Finike araç tamiri",
+        "Antalya batı oto tamir",
     ],
     alternates: {
-        canonical: "https://otoyasin.com/konum/kas",
+        canonical: "https://otoyasin.com/konum/finike",
+    },
+    openGraph: {
+        title: "Finike Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
+        description:
+            "Finike'de oto tamir ve bakım hizmeti. 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça garantisi.",
+        url: "https://otoyasin.com/konum/finike",
+        siteName: "Oto Yasin",
+        locale: "tr_TR",
+        type: "website",
     },
 };
 
@@ -33,7 +46,7 @@ const services = [
     "Çekici Hizmeti",
 ];
 
-// BreadcrumbList Schema for navigation rich snippets
+// BreadcrumbList Schema
 const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -53,19 +66,21 @@ const breadcrumbSchema = {
         {
             "@type": "ListItem",
             position: 3,
-            name: "Kaş",
-            item: "https://otoyasin.com/konum/kas",
+            name: "Finike",
+            item: "https://otoyasin.com/konum/finike",
         },
     ],
 };
 
+// LocalBusiness Schema for Finike
 const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    "@id": "https://otoyasin.com/konum/kas#localbusiness",
-    name: "Oto Yasin - Kaş Oto Tamir",
-    description: "Kaş'ın en güvenilir 7/24 açık oto tamir ve bakım servisi. 20+ yıl tecrübe, orijinal yedek parça.",
-    url: "https://otoyasin.com/konum/kas",
+    "@id": "https://otoyasin.com/konum/finike#localbusiness",
+    name: "Oto Yasin - Finike Oto Tamir Servisi",
+    description:
+        "Finike ve çevresinin en güvenilir 7/24 açık oto tamir ve bakım servisi. 20+ yıl tecrübe ile profesyonel hizmet.",
+    url: "https://otoyasin.com/konum/finike",
     telephone: "+90 532 493 49 68",
     address: {
         "@type": "PostalAddress",
@@ -82,7 +97,7 @@ const localBusinessSchema = {
     },
     areaServed: {
         "@type": "City",
-        name: "Kaş",
+        name: "Finike",
         containedInPlace: { "@type": "State", name: "Antalya" },
     },
     openingHoursSpecification: {
@@ -101,7 +116,7 @@ const localBusinessSchema = {
     },
 };
 
-export default function KasPage() {
+export default function FinikePage() {
     return (
         <>
             <script
@@ -121,15 +136,15 @@ export default function KasPage() {
                         <div className="max-w-3xl">
                             <div className="flex items-center gap-2 mb-6">
                                 <MapPin className="w-5 h-5 text-[#FF3D00]" />
-                                <span className="text-[#FF3D00] font-medium">Kaş, Antalya</span>
+                                <span className="text-[#FF3D00] font-medium">Finike, Antalya</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                                Kaş Oto Tamir ve Bakım Servisi
+                                Finike Oto Tamir ve Bakım Servisi
                             </h1>
                             <p className="text-lg text-[#A1A1AA] mb-8">
-                                Kaş&apos;ta 7/24 açık, güvenilir oto tamir adresi. 20 yılı aşkın
+                                Finike ve çevresinde 7/24 açık, güvenilir oto tamir adresi. 20 yılı aşkın
                                 tecrübemizle her marka araç için profesyonel bakım ve onarım
-                                hizmeti sunuyoruz.
+                                hizmeti sunuyoruz. Finike&apos;den Kaş servisimize kolay ulaşım.
                             </p>
 
                             <div className="flex flex-wrap gap-4 mb-8">
@@ -139,7 +154,11 @@ export default function KasPage() {
                                 </div>
                                 <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/10">
                                     <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                                    <span className="text-white">4.6/5 Google</span>
+                                    <span className="text-white">4.9/5 Google</span>
+                                </div>
+                                <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/10">
+                                    <MapPin className="w-4 h-4 text-[#FF3D00]" />
+                                    <span className="text-white">~25 dk mesafe</span>
                                 </div>
                             </div>
 
@@ -167,7 +186,7 @@ export default function KasPage() {
                 <section className="py-20 bg-[#1C1C1C]">
                     <div className="section-container">
                         <h2 className="text-3xl font-bold text-white mb-8">
-                            Kaş&apos;ta Sunduğumuz Hizmetler
+                            Finike&apos;den Ulaşabileceğiniz Hizmetler
                         </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {services.map((service) => (
@@ -189,12 +208,12 @@ export default function KasPage() {
                         <div className="grid lg:grid-cols-2 gap-12">
                             <div>
                                 <h2 className="text-3xl font-bold text-white mb-6">
-                                    Kaş Servis Noktamız
+                                    Finike&apos;den Servisimize Ulaşım
                                 </h2>
                                 <p className="text-[#A1A1AA] mb-6">
-                                    Kaş merkeze yakın konumumuzla hızlı ve kolay ulaşım imkanı
-                                    sunuyoruz. Geniş servis alanımız ve modern ekipmanlarımızla
-                                    aracınıza en iyi hizmeti veriyoruz.
+                                    Finike merkezden yaklaşık 25 dakikalık mesafedeyiz. D400 karayolu üzerinden
+                                    kolayca ulaşabilirsiniz. Acil durumlarda çekici hizmetimiz Finike&apos;ye de
+                                    hizmet vermektedir.
                                 </p>
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-4">
@@ -236,7 +255,7 @@ export default function KasPage() {
                                     style={{ border: 0 }}
                                     allowFullScreen
                                     loading="lazy"
-                                    title="Oto Yasin Kaş Konum"
+                                    title="Oto Yasin - Finike'den Ulaşım"
                                     className="grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                                 />
                             </div>
@@ -248,14 +267,14 @@ export default function KasPage() {
                 <section className="py-20 bg-gradient-to-r from-[#FF3D00] to-[#FF6B00]">
                     <div className="section-container text-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Kaş&apos;ta Aracınız İçin En İyi Hizmet
+                            Finike&apos;den Aracınız İçin En İyi Hizmet
                         </h2>
                         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
                             Hemen arayın, uzman ekibimizle tanışın. İlk bakımınızda %10
                             indirim fırsatını kaçırmayın!
                         </p>
                         <a
-                            href="https://wa.me/905324934968?text=Merhaba,%20Kaş%20bölgesinden%20arıyorum.%20Araç%20bakımı%20için%20randevu%20almak%20istiyorum."
+                            href="https://wa.me/905324934968?text=Merhaba,%20Finike%20bölgesinden%20arıyorum.%20Araç%20bakımı%20için%20randevu%20almak%20istiyorum."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#FF3D00] font-bold rounded-xl hover:bg-white/90 transition-all duration-200"

@@ -39,13 +39,42 @@ export const metadata: Metadata = {
     },
 };
 
+// BreadcrumbList Schema for navigation rich snippets
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Ana Sayfa",
+            item: "https://otoyasin.com",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "Hizmetler",
+            item: "https://otoyasin.com/#hizmetler",
+        },
+        {
+            "@type": "ListItem",
+            position: 3,
+            name: service.title,
+            item: `https://otoyasin.com/hizmet/${service.slug}`,
+        },
+    ],
+};
+
 const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `https://otoyasin.com/hizmet/${service.slug}#service`,
     name: service.title,
     description: service.heroDescription,
+    url: `https://otoyasin.com/hizmet/${service.slug}`,
     provider: {
         "@type": "AutoRepair",
+        "@id": "https://otoyasin.com/#localbusiness",
         name: "Oto Yasin",
         telephone: "+90 532 493 49 68",
         address: {
@@ -57,17 +86,34 @@ const serviceSchema = {
             addressCountry: "TR",
         },
     },
-    areaServed: {
-        "@type": "City",
-        name: "Kaş",
-    },
+    areaServed: [
+        { "@type": "City", name: "Kaş" },
+        { "@type": "City", name: "Kalkan" },
+        { "@type": "City", name: "Demre" },
+        { "@type": "City", name: "Finike" },
+        { "@type": "State", name: "Antalya" },
+    ],
     serviceType: service.title,
     offers: {
         "@type": "Offer",
         priceSpecification: {
             "@type": "PriceSpecification",
             priceCurrency: "TRY",
+            price: service.priceRange,
         },
+        availability: "https://schema.org/InStock",
+    },
+    termsOfService: service.warranty,
+    hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: service.title,
+        itemListElement: service.features.map((feature) => ({
+            "@type": "Offer",
+            itemOffered: {
+                "@type": "Service",
+                name: feature,
+            },
+        })),
     },
 };
 
@@ -91,6 +137,10 @@ export default function AltTakimPage() {
 
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

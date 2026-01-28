@@ -8,16 +8,30 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Kalkan Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
     description:
-        "Kalkan'da oto tamir ve bakım hizmeti arıyorsanız doğru yerdesiniz! 7/24 açık, 20+ yıl tecrübe. Kaş merkezden hızlı servis.",
+        "Kalkan'da oto tamir ve bakım hizmeti arıyorsanız doğru yerdesiniz! 7/24 açık, 20+ yıl tecrübe, orijinal yedek parça. Kaş merkezden hızlı servis.",
     keywords: [
         "Kalkan oto tamir",
         "Kalkan oto elektrik",
-        "Kalkan tamirci",
-        "Kalkan yağ değişimi",
+        "Kalkan 7/24 açık tamirci",
+        "Kalkan yag degisimi",
         "Kalkan acil oto yardım",
+        "Kalkan vize kontrolü",
+        "Kalkan oto bakım",
+        "Kalkan oto servis",
+        "Kalkan araç tamiri",
+        "Antalya batı oto tamir",
     ],
     alternates: {
         canonical: "https://otoyasin.com/konum/kalkan",
+    },
+    openGraph: {
+        title: "Kalkan Oto Tamir | 7/24 Açık Oto Bakım Servisi - Oto Yasin",
+        description:
+            "Kalkan'da oto tamir ve bakım hizmeti. 7/24 açık, 20+ yıl tecrübe.",
+        url: "https://otoyasin.com/konum/kalkan",
+        siteName: "Oto Yasin",
+        locale: "tr_TR",
+        type: "website",
     },
 };
 
@@ -30,22 +44,76 @@ const services = [
     "Alt Takım Onarımı",
 ];
 
+// BreadcrumbList Schema for navigation rich snippets
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Ana Sayfa",
+            item: "https://otoyasin.com",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "Hizmet Bölgeleri",
+            item: "https://otoyasin.com/#bolgeler",
+        },
+        {
+            "@type": "ListItem",
+            position: 3,
+            name: "Kalkan",
+            item: "https://otoyasin.com/konum/kalkan",
+        },
+    ],
+};
+
 const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    name: "Oto Yasin - Kalkan Bölgesi",
-    description: "Kalkan bölgesine hizmet veren 7/24 açık oto tamir servisi",
+    "@id": "https://otoyasin.com/konum/kalkan#localbusiness",
+    name: "Oto Yasin - Kalkan Oto Tamir Servisi",
+    description: "Kalkan bölgesine hizmet veren 7/24 açık oto tamir servisi. 20+ yıl tecrübe, orijinal yedek parça.",
     url: "https://otoyasin.com/konum/kalkan",
     telephone: "+90 532 493 49 68",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Ova, Atatürk Bulvarı Güneş Sokak No 134/4",
+        addressLocality: "Kaş",
+        addressRegion: "Antalya",
+        postalCode: "07974",
+        addressCountry: "TR",
+    },
     areaServed: {
-        "@type": "Place",
-        name: "Kalkan, Kaş, Antalya",
+        "@type": "City",
+        name: "Kalkan",
+        containedInPlace: { "@type": "State", name: "Antalya" },
+    },
+    openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "00:00",
+        closes: "23:59",
+    },
+    priceRange: "₺₺",
+    aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount: "43",
     },
 };
 
 export default function KalkanPage() {
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
