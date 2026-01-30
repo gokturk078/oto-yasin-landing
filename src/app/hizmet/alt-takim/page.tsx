@@ -130,6 +130,61 @@ const faqSchema = {
     })),
 };
 
+// HowTo Schema - Featured Snippets & Voice Search
+const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Oto Yasin'de Alt Takım Bakımı Nasıl Yapılır?",
+    description: "Kaş'ta profesyonel alt takım bakım ve onarımı adım adım işlem süreci",
+    totalTime: "PT3H",
+    estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "TRY",
+        value: service.priceRange,
+    },
+    supply: [
+        { "@type": "HowToSupply", name: "Amortisör" },
+        { "@type": "HowToSupply", name: "Fren Balatası" },
+        { "@type": "HowToSupply", name: "Rot Başı" },
+        { "@type": "HowToSupply", name: "Salıncak" },
+    ],
+    tool: [
+        { "@type": "HowToTool", name: "Hidrolik Lift" },
+        { "@type": "HowToTool", name: "Rot Ayar Cihazı" },
+        { "@type": "HowToTool", name: "Amortisör Test Cihazı" },
+    ],
+    step: [
+        {
+            "@type": "HowToStep",
+            position: 1,
+            name: "Randevu ve Kabul",
+            text: "WhatsApp veya telefon ile 7/24 randevu alın. Aracınızı servisimize getirin.",
+            url: "https://otoyasin.com/hizmet/alt-takim#randevu",
+        },
+        {
+            "@type": "HowToStep",
+            position: 2,
+            name: "Süspansiyon Kontrolü",
+            text: "Amortisör, rot başı, salıncak ve tüm süspansiyon parçaları detaylı incelenir. Aşınma ve hasar tespiti yapılır.",
+            url: "https://otoyasin.com/hizmet/alt-takim#kontrol",
+        },
+        {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Profesyonel Onarım",
+            text: "Tespit edilen arızalı parçalar orijinal veya OEM parçalarla değiştirilir. Balata, disk, amortisör montajı yapılır.",
+            url: "https://otoyasin.com/hizmet/alt-takim#onarim",
+        },
+        {
+            "@type": "HowToStep",
+            position: 4,
+            name: "Rot Ayarı ve Test",
+            text: "Profesyonel düz ayar cihazıyla rot ayarı yapılır. Test sürüşü ile yol tutuşu ve fren performansı kontrol edilir.",
+            url: "https://otoyasin.com/hizmet/alt-takim#test",
+        },
+    ],
+};
+
 export default function AltTakimPage() {
     if (!service) {
         notFound();
@@ -149,6 +204,10 @@ export default function AltTakimPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+            />
             <Header />
             <ServicePageClient service={service} />
             <Footer />
@@ -156,3 +215,4 @@ export default function AltTakimPage() {
         </>
     );
 }
+

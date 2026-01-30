@@ -130,6 +130,58 @@ const faqSchema = {
     })),
 };
 
+// HowTo Schema - Featured Snippets & Voice Search
+const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Oto Yasin'den Yedek Parça Nasıl Alınır?",
+    description: "Kaş'ta orijinal ve OEM yedek parça satın alma ve montaj adım adım işlem süreci",
+    totalTime: "PT1H",
+    estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "TRY",
+        value: "Parçaya göre değişir",
+    },
+    supply: [
+        { "@type": "HowToSupply", name: "Orijinal Yedek Parça" },
+        { "@type": "HowToSupply", name: "OEM Kalite Parça" },
+    ],
+    tool: [
+        { "@type": "HowToTool", name: "Parça Katalog Sistemi" },
+        { "@type": "HowToTool", name: "Montaj Ekipmanları" },
+    ],
+    step: [
+        {
+            "@type": "HowToStep",
+            position: 1,
+            name: "İhtiyaç Belirleme",
+            text: "WhatsApp veya telefon ile aracınızın marka, model ve ihtiyaç duyduğunuz parçayı bildirin.",
+            url: "https://otoyasin.com/hizmet/yedek-parca#iletisim",
+        },
+        {
+            "@type": "HowToStep",
+            position: 2,
+            name: "Fiyat Teklifi",
+            text: "Orijinal ve OEM alternatifler için fiyat teklifi alın. Parça özellikleri ve garanti koşulları açıklanır.",
+            url: "https://otoyasin.com/hizmet/yedek-parca#teklif",
+        },
+        {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Parça Temini",
+            text: "Stokta bulunan parçalar anında, bulunmayanlar 24-48 saat içinde temin edilir.",
+            url: "https://otoyasin.com/hizmet/yedek-parca#temin",
+        },
+        {
+            "@type": "HowToStep",
+            position: 4,
+            name: "Profesyonel Montaj",
+            text: "Satın alınan parçanın profesyonel montajı yapılır. 1 yıl işçilik ve parça garantisi verilir.",
+            url: "https://otoyasin.com/hizmet/yedek-parca#montaj",
+        },
+    ],
+};
+
 export default function YedekParcaPage() {
     if (!service) {
         notFound();
@@ -149,6 +201,10 @@ export default function YedekParcaPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+            />
             <Header />
             <ServicePageClient service={service} />
             <Footer />
@@ -156,3 +212,4 @@ export default function YedekParcaPage() {
         </>
     );
 }
+

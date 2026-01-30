@@ -130,6 +130,61 @@ const faqSchema = {
     })),
 };
 
+// HowTo Schema - Featured Snippets & Voice Search
+const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Oto Yasin'de Oto Elektrik Servisi Nasıl Yapılır?",
+    description: "Kaş'ta profesyonel oto elektrik servisi adım adım işlem süreci",
+    totalTime: "PT2H",
+    estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "TRY",
+        value: service.priceRange,
+    },
+    supply: [
+        { "@type": "HowToSupply", name: "Orijinal Akü" },
+        { "@type": "HowToSupply", name: "Alternatör" },
+        { "@type": "HowToSupply", name: "Marş Motoru" },
+        { "@type": "HowToSupply", name: "Elektrik Kablosu" },
+    ],
+    tool: [
+        { "@type": "HowToTool", name: "Diagnostik Cihaz" },
+        { "@type": "HowToTool", name: "Multimetre" },
+        { "@type": "HowToTool", name: "Akü Test Cihazı" },
+    ],
+    step: [
+        {
+            "@type": "HowToStep",
+            position: 1,
+            name: "Randevu ve Kabul",
+            text: "WhatsApp veya telefon ile 7/24 randevu alın. Aracınızı servisimize getirin veya acil durumda yol yardımı talep edin.",
+            url: "https://otoyasin.com/hizmet/oto-elektrik#randevu",
+        },
+        {
+            "@type": "HowToStep",
+            position: 2,
+            name: "Arıza Tespiti",
+            text: "Gelişmiş diagnostik cihazlarla tüm elektrik sistemleri kontrol edilir. Akü, alternatör, marş motoru ve kablo tesisatı incelenir.",
+            url: "https://otoyasin.com/hizmet/oto-elektrik#teshis",
+        },
+        {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Profesyonel Onarım",
+            text: "Tespit edilen arızalar orijinal veya OEM parçalarla giderilir. Tüm elektrik bağlantıları kontrol edilir.",
+            url: "https://otoyasin.com/hizmet/oto-elektrik#onarim",
+        },
+        {
+            "@type": "HowToStep",
+            position: 4,
+            name: "Test ve Teslimat",
+            text: "Onarım sonrası kapsamlı test yapılır. Şarj sistemi, aydınlatma ve tüm elektrikli aksamlar kontrol edilir. 1 yıl garanti ile teslim.",
+            url: "https://otoyasin.com/hizmet/oto-elektrik#test",
+        },
+    ],
+};
+
 export default function OtoElektrikPage() {
     if (!service) {
         notFound();
@@ -149,6 +204,10 @@ export default function OtoElektrikPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+            />
             <Header />
             <ServicePageClient service={service} />
             <Footer />
@@ -156,3 +215,4 @@ export default function OtoElektrikPage() {
         </>
     );
 }
+

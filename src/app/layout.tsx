@@ -100,8 +100,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Google Search Console verification code - add when available
-    // google: "your-google-verification-code",
+    google: "google-site-verification-code", // Replace with actual code from Google Search Console
+    // Bing verification - replace when available
+    // other: { name: "msvalidate.01", content: "bing-verification-code" },
   },
   category: "automotive",
 };
@@ -122,6 +123,77 @@ const websiteSchema = {
       urlTemplate: "https://otoyasin.com/?s={search_term_string}",
     },
     "query-input": "required name=search_term_string",
+  },
+};
+
+// Person Schema - E-E-A-T (Experience, Expertise, Authority, Trust)
+const founderPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://otoyasin.com/#founder",
+  name: "Yasin Usta",
+  jobTitle: "Kurucu & Baş Teknisyen",
+  description:
+    "20 yılı aşkın deneyime sahip oto tamir ve bakım uzmanı. Kaş ve Antalya bölgesinde binlerce aracı başarıyla tamir etmiştir.",
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://otoyasin.com/#organization",
+  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Profesyonel Deneyim",
+      name: "20+ Yıl Oto Tamir Deneyimi",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Uzmanlık Alanı",
+      name: "Oto Elektrik Sistemleri Uzmanlığı",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Uzmanlık Alanı",
+      name: "Motor ve Şanzıman Tamiri Uzmanlığı",
+    },
+  ],
+  knowsAbout: [
+    "Oto Tamir",
+    "Oto Elektrik",
+    "Motor Bakım",
+    "Şanzıman Tamiri",
+    "Fren Sistemi",
+    "Vize Kontrolü",
+    "Akü Değişimi",
+    "Alternatör Tamiri",
+    "Araç Diagnostik",
+    "Acil Yol Yardımı",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kaş",
+    addressRegion: "Antalya",
+    addressCountry: "TR",
+  },
+  sameAs: [],
+};
+
+// Speakable Schema - Voice Search Optimization
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://otoyasin.com/#webpage",
+  name: "Oto Yasin - Kaş Oto Tamir ve Bakım Merkezi",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [
+      "h1",
+      ".hero-description",
+      ".trust-badge",
+      "[data-speakable]",
+    ],
+  },
+  mainEntity: {
+    "@id": "https://otoyasin.com/#localbusiness",
   },
 };
 
@@ -406,6 +478,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+        {/* Person Schema - E-E-A-T (Founder/Expert) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(founderPersonSchema),
+          }}
+        />
+        {/* Speakable Schema - Voice Search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(speakableSchema),
           }}
         />
       </head>

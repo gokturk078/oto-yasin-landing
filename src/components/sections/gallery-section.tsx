@@ -8,42 +8,42 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 const galleryImages = [
     {
         src: "/images/realistic_exterior.png",
-        alt: "Oto Yasin Dış Görünüm - Kaş Oto Tamir Servisi",
+        alt: "Kaş Oto Tamir Servisi Oto Yasin Dış Görünüm - 7/24 Açık Antalya Oto Bakım Merkezi",
         title: "Servis Merkezi",
     },
     {
         src: "/images/workshop_wide.png",
-        alt: "Oto Yasin Geniş Atölye Görünümü",
+        alt: "Oto Yasin Kaş Modern Atölye - Profesyonel Oto Bakım Merkezi Geniş Görünüm",
         title: "Atölye Genel Görünüm",
     },
     {
         src: "/images/workshop_interior.png",
-        alt: "Oto Yasin Modern Atölye İçi",
+        alt: "Kaş Oto Elektrik ve Motor Bakım Servisi İç Görünüm - Oto Yasin Profesyonel Atölye",
         title: "Atölye İçi",
     },
     {
         src: "/images/reception_office.png",
-        alt: "Oto Yasin Modern Ofis ve Resepsiyon",
+        alt: "Oto Yasin Kaş Oto Servis Modern Müşteri Kabul Ofisi - Profesyonel Hizmet",
         title: "Modern Ofis",
     },
     {
         src: "/images/tool_wall.png",
-        alt: "Oto Yasin Profesyonel Alet ve Ekipman",
+        alt: "Kaş Oto Tamir Profesyonel Ekipman ve Aletler - Oto Yasin Orijinal Yedek Parça Servisi",
         title: "Profesyonel Ekipman",
     },
     {
         src: "/images/parts_storage.png",
-        alt: "Oto Yasin Yedek Parça Deposu",
+        alt: "Oto Yasin Kaş Orijinal ve OEM Yedek Parça Deposu - Araç Yedek Parça Satışı",
         title: "Yedek Parça Deposu",
     },
     {
         src: "/images/oil_products.png",
-        alt: "Oto Yasin Yağ ve Kimyasallar",
+        alt: "Castrol Shell Total Premium Motor Yağları Kaş - Oto Yasin Yağ Değişimi Servisi",
         title: "Yağ ve Kimyasallar",
     },
     {
         src: "/images/equipment_lift.png",
-        alt: "Oto Yasin Profesyonel Lift Ekipmanı",
+        alt: "Oto Yasin Profesyonel Hidrolik Lift - Kaş Alt Takım ve Fren Bakım Servisi",
         title: "Lift Ekipmanı",
     },
 ];

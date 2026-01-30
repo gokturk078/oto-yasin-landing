@@ -130,6 +130,60 @@ const faqSchema = {
     })),
 };
 
+// HowTo Schema - Featured Snippets & Voice Search
+const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Oto Yasin'de Vize Kontrolü Nasıl Yapılır?",
+    description: "Kaş'ta TÜVTÜRK muayenesine hazırlık için kapsamlı araç kontrolü adım adım işlem süreci",
+    totalTime: "PT1H",
+    estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "TRY",
+        value: service.priceRange,
+    },
+    supply: [
+        { "@type": "HowToSupply", name: "Fren Balatası" },
+        { "@type": "HowToSupply", name: "Far Ampulü" },
+        { "@type": "HowToSupply", name: "Silecek Lastiği" },
+    ],
+    tool: [
+        { "@type": "HowToTool", name: "Fren Test Cihazı" },
+        { "@type": "HowToTool", name: "Emisyon Ölçüm Cihazı" },
+        { "@type": "HowToTool", name: "Far Ayar Cihazı" },
+    ],
+    step: [
+        {
+            "@type": "HowToStep",
+            position: 1,
+            name: "Randevu ve Kabul",
+            text: "WhatsApp veya telefon ile randevu alın. Vize tarihinize en az 1 hafta kala gelin.",
+            url: "https://otoyasin.com/hizmet/vize-kontrolu#randevu",
+        },
+        {
+            "@type": "HowToStep",
+            position: 2,
+            name: "48 Nokta Kapsamlı Kontrol",
+            text: "TÜVTÜRK standartlarında fren, aydınlatma, egzoz, süspansiyon ve tüm güvenlik sistemleri detaylı incelenir.",
+            url: "https://otoyasin.com/hizmet/vize-kontrolu#kontrol",
+        },
+        {
+            "@type": "HowToStep",
+            position: 3,
+            name: "Anında Onarım",
+            text: "Tespit edilen sorunlar aynı gün onarılır. Far ayarı, balata değişimi, silecek değişimi gibi işlemler hızlıca tamamlanır.",
+            url: "https://otoyasin.com/hizmet/vize-kontrolu#onarim",
+        },
+        {
+            "@type": "HowToStep",
+            position: 4,
+            name: "Muayene Geçiş Garantisi",
+            text: "Kontrolümüzden sonra TÜVTÜRK'ten geçemezseniz, tespit edilen arızaların onarım masrafları tarafımızca karşılanır.",
+            url: "https://otoyasin.com/hizmet/vize-kontrolu#garanti",
+        },
+    ],
+};
+
 export default function VizeKontroluPage() {
     if (!service) {
         notFound();
@@ -149,6 +203,10 @@ export default function VizeKontroluPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+            />
             <Header />
             <ServicePageClient service={service} />
             <Footer />
@@ -156,3 +214,4 @@ export default function VizeKontroluPage() {
         </>
     );
 }
+
